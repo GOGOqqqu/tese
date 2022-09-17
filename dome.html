@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1>
+    这是一个git 指令的页面
+  </h1>
+  <hr />
+  <h1>指令</h1>
+  <p>查看当前仓库状态</p>
+  <div>git status</div>
+  <p>将工作区变更同步到版本仓库 (提交)</p>
+  <div>git commit -m "本次提交相关备注,具体做了什么事"</div>
+  <p>注意: 每次提交必须携带 -m "明确的做了什么的提交信息" 否则容易被炒鱿鱼</p>
+
+  <p>查看提交日记历史记录</p>
+  <div>git log</div>
+
+  <p>文件的删除</p>
+  <div>git rm 文件名</div>
+  <p>删除也是一种git仓库文件的修改,这时需要调用 rm 指令将删除行为添加到暂存区</p>
+
+  <h2>版本回退</h2>
+  <div>如果在开发中将错误的代码添加并提交到了版本仓库这时可以使用版本回退方法，可以将版本仓库整个回退到上一个版本（上一次commit）时</div>
+  <h3>第一步</h3>
+  <p>查看完整日志 git log</p>
+  <p>查看简写每个日志一行输出 git log --pretty=oneline</p>
+  <h3>第二步 </h3>
+  <p>使用reset 进行版本回退</p>
+  <div>返回上一个版本, windows CMD HEAD一定要加引号 git reset --hard "HEAD^"</div>
+
+  <div>使用gitbash 返回上一个版本 git reset --hard HEAD^</div>
+  <div>使用gitbash 返回上二个版本 git reset --hard HEAD^^</div>
+  <div>使用gitbash 返回上N个版本 git reset --hard HEAD~n</div>
+  <div>上面的方法很繁琐，推荐使用版本号回退，注意版本号不需要全写 git reset --hard 版本号</div>
+
+  <h2>补充</h2>
+  <p>如果在开发中如果开发人员不小心回退版本多了，可以使用git reflog指令查看所有操作记录，并查找到想到的版本号，通过reset方法回到指定版本</p>
+
+  <div>回到最近一次git commit 或 git add是 </div>
+  <div> git checkout -- 文件名</div>
+
+  <div>上面的方法在 git 2.23版本 使用restore方法替代了 checkout -- 方法 </div>
+  <div> git restore 文件名 </div>
+
+  <div>restore 撤销所有文件的修改</div>
+  <div>git restore</div>
+  <p>注意：
+    因为 checkout 有另一个功能"分支切换",该指令后跟 -- 又表示撤销操作显得 checkout 功能有点含糊不清
+    所以在git 2.23 中新增restore指令实现撤销操作,而 checkout 用来做分支切换
+  </p>
+  <h3>撤销本次文件提交到暂存区</h3>
+  <p>git restore --staged 文件名</p>
+
+  <h1>远程仓库</h1>
+  <h2>创建分支</h2>
+  <div>
+    创建分支并切换到 dev 分支中
+    git checkout -b dev
+  </div>
+  <div>
+    创建分支
+    git branch dev
+  </div>
+  <div>
+    切换分支
+    git checkout dev
+  </div>
+  <div>
+    git 提供了新指令,切换分支
+    git switch dev
+  </div>
+  <div>
+    switch指令实现创建并切换分支
+    git switch -c dev
+  </div>
+</body>
+
+</html>
